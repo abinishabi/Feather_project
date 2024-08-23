@@ -33,5 +33,9 @@ app.listen(process.env.PORT, () =>
   console.log(`Example app listening on port ${process.env.PORT}!`)
 
 );
+app.post("/user/createUser", (req, res) => {
+  // Handle the POST request here
+  res.send("User created");
+});
 
 
