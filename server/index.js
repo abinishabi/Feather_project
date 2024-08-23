@@ -10,11 +10,13 @@ const connectDatabase = require("./db/db");
 dotenv.config({ path: path.join(__dirname, ".", ".env") });
 
 //cors
-app.use(cors(
-  origin= 'https://signin.abinish.in',
-  methods= ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders= ['Content-Type', 'Authorization']
-));
+app.use(
+  cors(
+    (origin = "https://api.abinish.in/user/createUser"),
+    (methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]),
+    (allowedHeaders = ["Content-Type", "Authorization"])
+  )
+);
 app.options("*", cors());
 
 //middleware
@@ -29,4 +31,9 @@ app.use("/", userRoute);
 
 app.listen(process.env.PORT, () =>
   console.log(`Example app listening on port ${process.env.PORT}!`)
+
 );
+app.post("/user/createUser", (req, res) => {
+  // Handle user creation
+  res.send("User created");
+});
