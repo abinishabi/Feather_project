@@ -11,6 +11,9 @@ dotenv.config({ path: path.join(__dirname, ".", ".env") });
 
 //cors
 app.use(cors(
+  origin= 'https://signin.abinish.in',
+  methods= ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders= ['Content-Type', 'Authorization']
 ));
 app.options("*", cors());
 
