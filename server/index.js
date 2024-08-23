@@ -33,7 +33,20 @@ app.listen(process.env.PORT, () =>
   console.log(`Example app listening on port ${process.env.PORT}!`)
 
 );
+app.use(
+  cors({
+    origin: "https://signin.abinish.in",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
+// Your API route
 app.post("/user/createUser", (req, res) => {
-  // Handle user creation
+  // Handle the request
   res.send("User created");
+});
+
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
 });
