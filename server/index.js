@@ -50,3 +50,15 @@ app.post("/user/createUser", (req, res) => {
 app.listen(3000, () => {
   console.log("Server running on port 3000");
 });
+
+axios
+  .post("https://api.abinish.in/user/createUser", {
+    /* data */
+  })
+  .then((response) => console.log(response))
+  .catch((error) =>
+    console.error(
+      "Error:",
+      error.response ? error.response.data : error.message
+    )
+  );
