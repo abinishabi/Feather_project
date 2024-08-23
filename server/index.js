@@ -10,7 +10,8 @@ const connectDatabase = require("./db/db");
 dotenv.config({ path: path.join(__dirname, ".", ".env") });
 
 //cors
-app.use(cors());
+app.use(cors(
+));
 app.options("*", cors());
 
 //middleware
