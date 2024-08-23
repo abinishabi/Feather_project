@@ -13,7 +13,7 @@ const Auth = () => {
 
   const navigate = useNavigate();
 
-  const base_url ="https://api.abinish.in/user";
+  const base_url = "https://api.abinish.in/user/createUser";
   const [data, setData] = React.useState([]);
 
   const handleLogin = async () => {
