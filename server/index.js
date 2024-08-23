@@ -1,26 +1,37 @@
 const express = require("express");
-const cors = require("cors");
-
 const app = express();
+const dotenv = require("dotenv");
+const path = require("path");
+const cors = require("cors");
+const morgan = require("morgan");
+const userRoute = require("./Routes/userRoute");
+const connectDatabase = require("./db/db");
+//env config
+dotenv.config({ path: path.join(__dirname, ".", ".env") });
 
-// Configure CORS
+//cors
 app.use(
-  cors({
-    origin: "https://signin.abinish.in", // Allow requests from this origin
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-  })
+  cors(
+    (origin = "https://api.abinish.in"),
+    (methods = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]),
+    (allowedHeaders = ["Content-Type", "Authorization"])
+  )
+);
+app.options("*", cors());
+
+//middleware
+app.use(express.json());
+app.use(morgan("tiny"));
+
+// connect database
+connectDatabase();
+
+// Routes
+app.use("/", userRoute);
+
+app.listen(process.env.PORT, () =>
+  console.log(`Example app listening on port ${process.env.PORT}!`)
+
 );
 
-app.use(express.json());
 
-// Define your routes
-app.post("/user/createUser", (req, res) => {
-  // Handle the POST request here
-  res.send("User created");
-});
-
-// Start the server
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
-});
