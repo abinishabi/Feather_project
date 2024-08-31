@@ -10,7 +10,7 @@ const connectDatabase = require("./db/db");
 dotenv.config({ path: path.join(__dirname, ".", ".env") });
 
 //cors
-app.use(cors({ origin: "https://signin.abinish.in" }));
+app.use(cors());
 app.options("*", cors());
 
 //middleware

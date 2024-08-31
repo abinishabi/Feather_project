@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import CustomInput from "./components/CustomInput";
 import CustomButton from "./components/CustomButton";
 
-
 const Auth = () => {
   const [Email, setEmail] = React.useState("");
   const [Password, setPassword] = React.useState("");
@@ -13,7 +12,7 @@ const Auth = () => {
 
   const navigate = useNavigate();
 
-  const base_url = "https://api.abinish.in";
+  const base_url = "http://localhost:3000";
   const [data, setData] = React.useState([]);
 
   const handleLogin = async () => {
